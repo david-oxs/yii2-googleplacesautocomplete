@@ -3,19 +3,29 @@
     "description": "Google Places Auto Complete input widget for Yii2",
     "license": "MIT",
     "authors": [
-        {
-            "name": "David Osorio",
-            "email": "david.osorio@globaloxs.com"
-        }
+    {
+        "name": "David Osorio",
+        "email": "david.osorio@globaloxs.com"
+    }
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.4.0",
-        "yiisoft/yii2": "*"
-    },
-    "autoload": {
-        "psr-4": {
-            "globaloxs\\widgets\\InputPlace\\": "src/"
+        "yiisoft/yii2": "*",
+        "bower-asset/geocomplete": "*"
+
+        },
+        "autoload": {
+            "psr-4": {
+                "globaloxs\\widgets\\InputPlace\\": "src/"
+            }
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                    },
+                    "branch-alias": {
+                        "dev-master": "1.0-dev"
+                    }
+                }
+            }
         }
-    }
-}
