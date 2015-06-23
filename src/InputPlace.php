@@ -1,0 +1,53 @@
+<?php
+
+namespace globaloxs\widgets\InputPlace;
+
+use yii\widgets\InputWidget;
+use yii\helpers\Html;
+use yii\helpers\Json;
+
+
+class InputPlace extends InputWidget {
+
+    const API_URL = 'http://maps.googleapis.com/maps/api/js?';
+
+    public $libraries = 'places';
+
+    public $sensor = true;
+
+    public $autocompleteOptions = [];
+
+    /**
+     * Renders the widget.
+     */
+    public function run(){
+        $this->registerClientScript();
+        if ($this->hasModel()) {
+            echo Html::activeTextInput($this->model, $this->attribute, $this->options);
+        } else {
+            echo Html::textInput($this->name, $this->value, $this->options);
+        }
+    }
+
+    /**
+     * Registers the needed JavaScript.
+     */
+    public function registerClientScript(){
+        $elementId = $this->options['id'];
+        $scriptOptions = Json::encode($this->autocompleteOptions);
+        $view = $this->getView();
+        $view->registerJsFile(self::API_URL . http_build_query([
+            'libraries' => $this->libraries,
+            'sensor' => $this->sensor ? 'true' : 'false'
+        ]));
+        $view->registerJs(<<<JS
+(function(){
+    var input = document.getElementById('{$elementId}');
+    var options = {$scriptOptions};
+
+    new google.maps.places.Autocomplete(input, options);
+})();
+JS
+        , \yii\web\View::POS_READY);
+    }
+}
