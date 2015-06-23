@@ -1,6 +1,6 @@
 <?php
 
-namespace globaloxs\widgets\InputPlace;
+namespace globaloxs\widgets;
 
 use yii\widgets\InputWidget;
 use yii\helpers\Html;
