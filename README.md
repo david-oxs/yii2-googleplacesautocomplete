@@ -4,17 +4,18 @@ Google Places Auto Complete widget for Yii2
 
 ##Installation
 
-Add below to your `composer.json` file
+
 
 ```
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/petrabarus/yii2-googleplacesautocomplete"
-        }
-    ],
-    "requires": {
-        "petrabarus/yii2-googleplacesautocomplete": "*"
+composer require globaloxs/yii2-gpaci
+
+```
+
+Or add below to your `composer.json` file
+
+```
+    "require": {
+        "globaloxs/yii2-gpaci" : "*"
     }
 ```
 
@@ -23,9 +24,9 @@ Add below to your `composer.json` file
 Using widget and model.
 
 ```
-use PetraBarus\Yii2\GooglePlacesAutoComplete\GooglePlacesAutoComplete;
+use globaloxs\widgets\InputPlace;
 
-echo GooglePlacesAutoComplete::widget([
+echo InputPlace::widget([
     'model' => $model,
     'attribute' => 'location'
 ]);
@@ -34,20 +35,10 @@ echo GooglePlacesAutoComplete::widget([
 Using widget for custom field name and value.
 
 ```
-use PetraBarus\Yii2\GooglePlacesAutoComplete\GooglePlacesAutoComplete;
-echo GooglePlacesAutoComplete::widget([
+echo InputPlace::widget([
     'name' => 'place'
-    'value' => 'Jakarta'
+    'value' => 'Mexico'
 ]);
 
 ```
 
-Using active form.
-
-```
-use yii\bootstrap\ActiveForm;
-use PetraBarus\Yii2\GooglePlacesAutoComplete\GooglePlacesAutoComplete;
-
-echo $form = ActiveForm::begin();
-echo $form->field($model, 'location')->widget(GooglePlacesAutoComplete::className());
-```
