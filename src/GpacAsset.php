@@ -7,7 +7,7 @@ class GpacAsset extends AssetBundle
 {
     public $sourcePath = '@bower/geocomplete';
     public $js = [
-        'http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false',
+        '//maps.googleapis.com/maps/api/js?libraries=places&sensor=false',
         'jquery.geocomplete.js',
     ];
     public $css = [
