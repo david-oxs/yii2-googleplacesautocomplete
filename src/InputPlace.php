@@ -42,7 +42,7 @@ class InputPlace extends InputWidget {
       $scriptOptions = Json::encode($this->pluginOptions);
       $this->getView()->registerJs("
           (function(){
-          $('.geoinput').geocomplete($scriptOptions);
+          geoinput=$('.geoinput').geocomplete($scriptOptions);
           })();
       "
       , \yii\web\View::POS_READY);
